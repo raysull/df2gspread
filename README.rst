@@ -2,7 +2,7 @@
     df2gspread
 ==================
 
-Transfer data between Google Spreadsheets and Pandas DataFrame.
+Transfer data between Google Spreadsheets and Pandas DataFrame. No longer automatically casts your dataframe as a string. This allows for writing numbers, dates, etc to the google sheet.
 
 
 Description
