@@ -138,7 +138,7 @@ def upload(df, gfile="/New Spreadsheet", wks_name=None,
 
 
     # convert df values to string
-    df = df.applymap(str)
+    #df = df.applymap(str)
     # Addition of cell values
     cell_list = wks.range('%s%s:%s%d' % (
         first_col, first_row, last_col, last_idx))
