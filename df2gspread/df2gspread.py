@@ -24,7 +24,7 @@ except NameError:  # Python 3
 def upload(df, gfile="/New Spreadsheet", wks_name=None,
            col_names=True, row_names=True, clean=True, credentials=None,
            start_cell = 'A1', df_size = False, new_sheet_dimensions = (1000,100),
-           input_option = 'USER_ENTERED'):
+           input_option = 'USER_ENTERED',conv_string = True):
     '''
         Upload given Pandas DataFrame to Google Drive and returns
         gspread Worksheet object
@@ -49,6 +49,7 @@ def upload(df, gfile="/New Spreadsheet", wks_name=None,
         :param new_sheet_dimensions: tuple of (row, cols) for size of a new sheet
         :param input_option: Determines how input data should be interpreted.
             (see ValueInputOption GoogleSheet API)
+        :param conv_string: If True, converts dataframe to str before pushing to Google Sheet
         :type df: class 'pandas.core.frame.DataFrame'
         :type gfile: str
         :type wks_name: str
@@ -59,6 +60,7 @@ def upload(df, gfile="/New Spreadsheet", wks_name=None,
         :type start_cell: str
         :type df_size: bool
         :type new_sheet_dimensions: tuple
+        :type conv_string: bool
         :returns: gspread Worksheet
         :rtype: class 'gspread.models.Worksheet'
 
@@ -139,6 +141,9 @@ def upload(df, gfile="/New Spreadsheet", wks_name=None,
 
     # convert df values to string
     #df = df.applymap(str)
+    if conv_string:
+    	df = df.applymap(str)
+
     # Addition of cell values
     cell_list = wks.range('%s%s:%s%d' % (
         first_col, first_row, last_col, last_idx))
