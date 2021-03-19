@@ -149,7 +149,7 @@ def upload(df, gfile="/New Spreadsheet", wks_name=None,
         first_col, first_row, last_col, last_idx))
     for j, idx in enumerate(df.index):
         for i, col in enumerate(df.columns.values):
-            if not pd.isnull(df[col][idx]):
+            if not pd.isnull(df[col][idx].all()):
                 cell_list[i + j * len(df.columns.values)].value = df[col][idx]
 
     wks.update_cells(cell_list, value_input_option=input_option)
