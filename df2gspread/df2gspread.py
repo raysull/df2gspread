@@ -141,7 +141,7 @@ def upload(df, gfile="/New Spreadsheet", wks_name=None,
 
     # convert df values to string
     # df = df.applymap(str)
-    if conv_string = True:
+    if conv_string == True:
     	df = df.applymap(str)
     else:
         print("not converting to string")
