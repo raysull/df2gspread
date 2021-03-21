@@ -143,8 +143,6 @@ def upload(df, gfile="/New Spreadsheet", wks_name=None,
     # df = df.applymap(str)
     if conv_string == True:
     	df = df.applymap(str)
-    else:
-        print("not converting to string")
 
     # Addition of cell values
     cell_list = wks.range('%s%s:%s%d' % (
