@@ -24,7 +24,7 @@ except NameError:  # Python 3
 def upload(df, gfile="/New Spreadsheet", wks_name=None,
            col_names=True, row_names=True, clean=True, credentials=None,
            start_cell = 'A1', df_size = False, new_sheet_dimensions = (1000,100),
-           input_option = 'USER_ENTERED', conv_string = False):
+           input_option = 'USER_ENTERED'):
     '''
         Upload given Pandas DataFrame to Google Drive and returns
         gspread Worksheet object
@@ -141,8 +141,6 @@ def upload(df, gfile="/New Spreadsheet", wks_name=None,
 
     # convert df values to string
     # df = df.applymap(str)
-    if conv_string == True:
-    	df = df.applymap(str)
 
     # Addition of cell values
     cell_list = wks.range('%s%s:%s%d' % (
